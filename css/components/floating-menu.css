@@ -1,0 +1,216 @@
+/*--- Floating Menu ---*/
+
+.floating-menu {
+   display: none;
+   position: absolute;
+   z-index: 3;
+   width: 350px;
+   max-width: 95vw;
+   flex-wrap: wrap;
+   justify-content: center;
+   background: #fff;
+   border: 1px solid #eee;
+   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.1);
+   border-radius: 8px;
+   padding: 7px 10px;
+}
+
+.floating-menu:before {
+   content: "";
+   position: absolute;
+   bottom: calc(100% - 5px);
+   left: 50%;
+   margin-left: -8px;
+   width: 10px;
+   height: 10px;
+   border: 1px solid #ddd;
+   transform: rotate(45deg);
+   border-width: 1px 0px 0px 1px;
+   background: #ffff;
+}
+
+.floating-menu.show {
+   display: flex;
+}
+
+.floating-menu.no-width {
+   width: auto;
+}
+
+.floating-menu.vertical {
+   flex-direction: column;
+   width: 300px;
+   box-sizing: border-box;
+}
+
+.floating-menu.vertical .floating-menu-option {
+   width: 100%;
+   flex-grow: 1;
+}
+
+.dashboard-navigator-item-container {
+   display: flex;
+   flex-direction: column;
+   overflow-x: hidden;
+   overflow-y: auto;
+   scrollbar-width: thin;
+   padding: 0 5px 0 0;
+}
+
+.dashboard-navigator-item-container::-webkit-scrollbar {
+   width: 6px;
+}
+
+.dashboard-navigator-item-container::-webkit-scrollbar-track {
+   background: #f1f1f1; /* You can change the background color */
+}
+
+.dashboard-navigator-item-container::-webkit-scrollbar-thumb {
+   background: #93aaca;
+}
+
+.floating-menu-option {
+   display: flex;
+   flex-direction: column;
+   position: relative;
+   background: #fff;
+   border: 1px solid #e7e5ef;
+   margin: 4px;
+   color: var(--primary);
+   width: 165px;
+   white-space: normal;
+   justify-content: space-between;
+   transition: all 0.3s;
+}
+
+.floating-menu.editor .floating-menu-option {
+   display: none;
+}
+
+.floating-menu-option.light {
+   border: 1px solid #fff;
+   margin: 0px;
+}
+
+.floating-menu-option.light:hover {
+   background: #f8fcff;
+   color: var(--blue);
+}
+
+.floating-menu-option.light:hover .floating-menu-option.light .floating-menu-option-icon:before {
+   border-color: #c6ddff;
+}
+
+.floating-menu-option.selected {
+   border: 1px solid var(--primary);
+}
+
+.floating-menu-edit[data-type="language"] {
+   min-height: 200px;
+}
+
+.floating-menu-edit[data-type="email"] {
+   min-width: 300px;
+}
+
+.floating-menu-option-icon {
+   width: 100%;
+   margin-bottom: 6px;
+}
+
+.floating-menu-option-icon:before {
+   width: 26px;
+   height: 26px;
+   line-height: 26px;
+   text-align: center;
+   font-size: 1.1rem;
+   border: 1px solid #eee;
+   border-radius: 15px;
+   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.07);
+   margin-right: 0;
+}
+
+.floating-menu-option.horizontal {
+   flex-wrap: wrap;
+   flex-direction: row;
+   font-size: 1.1rem;
+}
+
+.floating-menu-option.horizontal .floating-menu-option-icon {
+   width: 50px;
+   margin-bottom: 0px;
+}
+
+.floating-menu-option.horizontal .floating-menu-option-label {
+   width: auto;
+   text-align: left;
+   padding-left: 20px;
+}
+
+.floating-menu-option.horizontal .floating-menu-option-icon:before {
+   border: none;
+   box-shadow: none;
+   font-size: 2rem;
+   line-height: unset;
+   height: auto;
+   width: auto;
+}
+
+.loading.floating-menu-option-icon:before {
+   transform: translate(7px, 0px);
+   border: 0px;
+   box-shadow: none;
+}
+
+.floating-menu-option-icon:hover .floating-menu-option-icon:before {
+   border-color: #c6ddff;
+}
+
+.floating-menu-option-label {
+   flex-grow: 1;
+   width: 100%;
+}
+
+.floating-menu-option-description {
+   font-family: "Outfit", "Helvetica", "Arial";
+   color: var(--grey-text);
+   font-size: 0.95rem;
+   font-weight: normal;
+   margin-top: 10px;
+   display: none;
+}
+
+#floating-menu-send.editor,
+#floating-menu-send-pathway.editor {
+   width: 400px;
+}
+
+.show-help-text .floating-menu-option-description {
+   display: block;
+}
+
+.floating-menu-option:hover .floating-menu-option-description {
+   color: #fff;
+}
+
+.floating-menu-edit {
+   display: none;
+   background: #f8fafb;
+   text-align: center;
+   padding: 10px 20px;
+   flex-wrap: wrap;
+   flex-direction: column;
+   width: 100%;
+}
+
+.floating-menu-edit.active {
+   display: flex;
+}
+
+.floating-menu-edit.fixed-width {
+   flex-direction: row;
+}
+
+.floating-menu-edit.fixed-width button {
+   width: 142px;
+}

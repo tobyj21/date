@@ -1,0 +1,72 @@
+.preferences-panel-hours-picker {
+   margin: 20px auto;
+   padding-right: 30px;
+   font-family: "Outfit";
+}
+
+.preferences-panel-hours-picker input {
+   display: none;
+}
+
+.preferences-panel-hours-picker th {
+   color: var(--primary);
+   padding-bottom: 5px;
+   font-weight: 500;
+}
+
+.preferences-panel-hours-picker-day {
+   color: var(--purple-text);
+}
+
+.preferences-panel-hours-picker td {
+   min-width: 90px;
+   padding: 2px 3px;
+}
+
+.preferences-panel-hours-picker-day > div {
+   width: 25%;
+   box-sizing: border-box;
+   text-align: center;
+}
+
+label.preferences-panel-hours-picker-time {
+   width: 100%;
+   border: 1px solid #fff;
+   background: #fff;
+   display: block;
+   padding: 6px 0 3px;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: all 0.3s;
+}
+
+label.preferences-panel-hours-picker-time:hover {
+   border: 1px solid var(--link);
+}
+
+label.preferences-panel-hours-picker-time:before {
+   font-family: "icons";
+   content: "\f096";
+   display: block;
+   text-align: center;
+   color: #ccc;
+}
+
+.preferences-panel-hours-picker-time:disabled + label.preferences-panel-hours-picker-time {
+   background: none;
+   opacity: 0.3;
+   pointer-events: none;
+}
+
+input.preferences-panel-hours-picker-time:checked + .preferences-panel-hours-picker-time:before {
+   content: "\e84c";
+   color: var(--link);
+}
+
+.preferences-panel-hours-picker-time:hover:before {
+   color: var(--link);
+}
+
+.preferences-panel-hours-picker-time:focus {
+   border: 1px dashed var(--primary);
+}

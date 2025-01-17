@@ -1,0 +1,424 @@
+.definition-select {
+   position: relative;
+   width: 320px;
+   margin: 8px;
+   line-height: normal;
+}
+
+.full-width-definition-picker .definition-select {
+   width: 100%;
+}
+
+.full-width-definition-picker.error {
+   border: 4px solid var(--red);
+   border-width: 0 0 0 4px;
+}
+
+.definition-select-selected {
+   display: none;
+}
+
+.definition-select-single-selection {
+   color: #fff;
+   font-size: 1.1rem;
+}
+
+.definition-select-selected-items {
+   background-color: var(--purple-light);
+   padding: 5px 10px;
+   color: var(--secondary);
+   border-radius: 4px;
+   min-height: 33px;
+   cursor: pointer;
+   flex-wrap: wrap;
+   display: flex;
+}
+
+.definition-select.open .definition-select-selected-items {
+   border-radius: 7px 7px 0 0;
+}
+
+.definition-select-selected-items:after {
+   content: "\f0fe";
+   font-family: "icons";
+   position: absolute;
+   top: 35%;
+   right: 7px;
+   opacity: 0.8;
+}
+
+.definition-select.open .definition-select-selected-items:after {
+   display: none;
+}
+
+.definition-select-selected-items:hover:after {
+   opacity: 1;
+}
+
+.definition-select-placeholder {
+   display: none;
+}
+
+.definition-select.open .definition-select-placeholder {
+   display: block;
+}
+
+.definition-select.open .definition-select-placeholder-no-selection,
+.issues-selected .definition-select-placeholder-no-selection,
+.definition-select.open .issues-selected .definition-select-placeholder {
+   display: none;
+}
+
+.selected-item {
+   margin: 2px 4px;
+   background: #fff;
+   color: #444;
+   padding: 1px 8px;
+   border-radius: 4px;
+   box-shadow: 1px 1px 1px rgb(0 0 0 / 20%);
+   font-family: "Outfit";
+   font-size: 1rem;
+   user-select: none;
+   white-space: nowrap;
+}
+
+.selected-item-delete {
+   cursor: pointer;
+   padding: 3px 6px;
+   color: #ccc;
+}
+
+.definition-select-single-selection .selected-item-delete:hover {
+   color: #fff;
+}
+
+.selected-item-delete:hover {
+   color: #444;
+}
+
+.selected-item-delete:before {
+   content: "\e80f";
+   font-family: "icons";
+}
+
+.definition-select-tree {
+   border: 1px solid #ebe0f9;
+   border-width: 0 1px 1px 1px;
+   border-radius: 0 0 4px 4px;
+   max-height: 300px;
+   overflow-y: auto;
+   overflow-x: hidden;
+   position: relative;
+   display: none;
+}
+
+.definition-select.open .definition-select-tree {
+   display: block;
+}
+
+.definition-select-tree.category-open {
+   padding-top: 60px;
+}
+
+.definition-select-dropdown {
+   position: absolute;
+   width: 100%;
+   background: #fff;
+   z-index: 1;
+   border-radius: 0 0 4px 4px;
+}
+
+.definition-select-search {
+   position: relative;
+   display: none;
+}
+
+.definition-select.open .definition-select-search {
+   display: block;
+   background: var(--purple-light);
+   padding: 6px;
+}
+
+.definition-select-search span {
+   position: absolute;
+   left: 15px;
+   top: 8px;
+   font-size: 1.3rem;
+   color: var(--secondary);
+}
+
+.definition-select-search input {
+   font-size: 1.1rem;
+   padding: 6px 4px 6px 45px;
+   border-radius: 20px;
+   margin: 0px;
+   border-width: 0;
+   width: 100%;
+   box-sizing: border-box;
+   font-family: "Outfit";
+}
+
+.definition-select-search input:focus {
+   outline: 0;
+}
+
+.tree-select-item {
+   font-size: 1.1rem;
+   color: #444;
+   background: var(--purple-light);
+   margin: 4px;
+   border-radius: 5px;
+   position: relative;
+   user-select: none;
+   opacity: 0;
+   display: flex;
+   justify-content: space-between;
+   padding: 0px 2px 0px 2px;
+   font-family: "Outfit";
+}
+
+.tree-select-item.animate-off {
+   opacity: 1;
+}
+
+.tree-select-category {
+   opacity: 1;
+   position: absolute;
+   width: 100%;
+   background: #f5f9fb;
+   border-bottom: 1px solid #ddd;
+   padding: 0px;
+   cursor: auto;
+}
+
+.category-content {
+   position: relative;
+   padding: 2px 4px;
+}
+
+.tree-select-category .back {
+   background: var(--purple);
+   color: #fff;
+   font-size: 1rem;
+   padding: 2px 6px;
+   top: 0px;
+   right: 0px;
+   left: 0px;
+   display: block;
+   cursor: pointer;
+}
+
+.tree-select-category .back:hover {
+   background: #9e8eef;
+}
+
+.tree-select-category .back:before {
+   content: "\f148";
+   font-family: "icons";
+   margin-right: 3px;
+}
+
+.slide-left {
+   -webkit-animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+   animation: slide-left 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.tree-select-item:before,
+.tree-select-category:before,
+.tree-select-item-label:before {
+   margin: 1px 8px 1px 3px !important;
+   width: 25px;
+}
+
+.category-open .tree-select-item {
+   padding-left: 12px;
+}
+
+.tree-select-item:hover {
+   background-color: #88cff1;
+   color: #fff !important;
+}
+
+.tree-select-item.parent:after {
+   content: "\e82e";
+   font-family: "icons";
+   display: block;
+   position: absolute;
+   right: 8px;
+   top: 8px;
+   color: #bfdbe9;
+}
+
+.tree-select-item.parent:hover:after {
+   content: "\e82f";
+   color: #fff;
+}
+
+.tree-select-item.selected {
+   color: var(--green);
+}
+
+.tree-select-item.selected:before,
+.tree-select-category.selected:before {
+   content: "\e80e";
+   background: var(--green);
+   color: #fff;
+   border-radius: 12px;
+}
+
+.tree-select-item.selected:hover {
+   background: #fff;
+   color: var(--green) !important;
+}
+
+@-webkit-keyframes slide-left {
+   0% {
+      -webkit-transform: translateX(40px);
+      transform: translateX(40px);
+      opacity: 0;
+   }
+   100% {
+      -webkit-transform: translateX(0px);
+      transform: translateX(0px);
+      opacity: 1;
+   }
+}
+@keyframes slide-left {
+   0% {
+      -webkit-transform: translateX(40px);
+      transform: translateX(40px);
+      opacity: 0;
+   }
+   100% {
+      -webkit-transform: translateX(0px);
+      transform: translateX(0px);
+      opacity: 1;
+   }
+}
+
+.tree-select-add-generalist {
+   background: var(--purple);
+   color: #fff;
+   font-size: 1rem;
+   padding: 2px 6px;
+   border-radius: 20px;
+   position: absolute;
+   right: 4px;
+   top: -22px;
+   cursor: pointer;
+   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tree-select-add-generalist:before {
+   margin-right: 4px;
+}
+
+.tree-select-add-generalist:hover {
+   background: #8f82da;
+}
+
+.definition-select-help {
+   position: absolute;
+   bottom: 100%;
+   right: 7px;
+   background: var(--blue);
+   color: rgba(255, 255, 255, 0.8);
+   padding: 2px 8px;
+   border-radius: 5px 5px 0 0;
+   cursor: pointer;
+}
+
+.definition-select-help:hover {
+   color: rgba(255, 255, 255, 1);
+}
+
+.definition-select-help:after {
+   content: "\e825";
+   font-family: "icons";
+   margin-left: 6px;
+}
+
+.flat-picker {
+   width: 550px;
+   max-width: 90vw;
+}
+
+.tree-select-item-actions {
+   width: 195px;
+   text-align: right;
+}
+
+.tree-select-item-button {
+   margin: 4px 0px;
+   background: #fff;
+   border: 1px solid var(--blue);
+   color: var(--blue);
+}
+
+.flat-picker .definition-select-tree.category-open {
+   padding-top: 0px;
+}
+
+.tree-select-item-label {
+   line-height: 34px;
+   display: flex;
+}
+
+.flat-picker .tree-select-item:hover {
+   background: #f4f3ff;
+   color: var(--purple) !important;
+}
+
+.flat-picker .tree-select-item.selected:before {
+   display: none;
+}
+
+.tree-select-item.selected .tree-select-item-select {
+   background: var(--green);
+   border: 1px solid var(--green);
+   color: #fff;
+}
+
+.tree-select-item.selected.tree-select-item-label:before {
+   content: "\e80e";
+   background: var(--green);
+   color: #fff;
+   border-radius: 12px;
+   height: 20px;
+   font-size: 0.9rem;
+   line-height: 23px;
+   transform: translateY(5px);
+}
+
+.tree-select-item.selected,
+.tree-select-item.selected:hover {
+   background: #f7fdef;
+   color: var(--green) !important;
+   border: 1px solid var(--green);
+}
+
+.tree-select-item-open-folder:before,
+.tree-select-item-select:before {
+   content: "\e82e";
+   font-family: "icons";
+   margin-right: 8px;
+}
+
+.tree-select-item-select:before {
+   content: "\e80e";
+}
+
+.tree-select-item-open-folder:hover:before {
+   content: "\e82f";
+}
+
+.tree-search-unrecognized {
+   color: #aaa;
+   padding: 10px 8px;
+}
+
+.tree-search-unrecognized:before {
+   content: "\e825";
+   font-family: "icons";
+   margin-right: 8px;
+}

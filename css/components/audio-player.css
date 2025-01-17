@@ -1,0 +1,89 @@
+.audio-player-container {
+   background: #fff;
+   padding: 18px;
+   border-radius: 8px;
+   box-shadow: 0px 4px 10px 2px rgb(161 190 226 / 31%);
+   display: flex;
+   position: relative;
+   min-width: 380px;
+   max-width: 100%;
+}
+
+.waveform {
+   flex-grow: 1;
+}
+
+.play-pause-container {
+   display: flex;
+   flex-direction: column;
+   text-align: center;
+   margin-right: 15px;
+}
+
+button.playPause {
+   width: 50px;
+   height: 50px;
+   display: block;
+   text-align: center;
+   border-radius: 30px;
+   background: #faae3e;
+   margin-top: 35px;
+}
+
+button.playPause:focus {
+   border: 0px;
+}
+
+.playPauseIcon {
+   width: 0;
+   height: 0;
+   border-left: 18px solid #fff;
+   border-top: 13px solid transparent;
+   border-bottom: 13px solid transparent;
+   cursor: pointer;
+   margin: auto;
+}
+
+.playPause.paused .playPauseIcon {
+   width: 20px;
+   height: 20px;
+   border: none;
+   background-color: transparent;
+   position: relative;
+}
+
+.playPause.paused .playPauseIcon:before,
+.playPause.paused .playPauseIcon:after {
+   content: "";
+   position: absolute;
+   width: 6px;
+   height: 20px;
+   background-color: #fff;
+}
+
+.playPause.paused .playPauseIcon:before {
+   left: 2px;
+}
+
+.playPause.paused .playPauseIcon:after {
+   right: 2px;
+}
+
+.speedControl {
+   background: #f4f4f4;
+   border: 0px;
+   padding: 0 2px;
+   border-radius: 5px;
+   font-family: "ceraRound";
+   font-size: 1.05rem;
+   color: #555;
+   text-align: center;
+   margin-top: 8px;
+}
+
+.download-container {
+   position: absolute;
+   bottom: 8px;
+   right: 8px;
+   z-index: 500;
+}

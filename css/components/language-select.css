@@ -1,0 +1,138 @@
+.translate-panel {
+   margin: 5px 30px;
+   display: flex;
+   justify-content: left;
+}
+
+.translate-panel:before {
+   font-size: 1.5rem;
+   color: #0e6fa5;
+}
+
+.translations {
+   background: #fff;
+   padding: 4px 10px;
+   border-radius: 27px;
+}
+
+.translation {
+   padding: 2px 15px;
+}
+
+.translate-lookup-container {
+   display: none;
+   position: relative;
+}
+
+.cms-translate-lookup-container {
+   position: relative;
+   width: 100%;
+}
+
+.translate-panel.open .translate-lookup-container {
+   display: block;
+}
+
+.translate-panel.open .translate-toggle {
+   display: none;
+}
+
+.language-search {
+   border-radius: 10px 10px 0 0;
+   border: 0px;
+   padding: 6px 8px 4px 40px;
+   font-size: 16px;
+}
+
+.cms-translate-lookup-container .language-search {
+   width: 100%;
+   box-sizing: border-box;
+   padding: 8px 6px 6px 32px;
+   font-size: 1.1rem;
+   border-bottom: 2px solid #e7e7e7;
+}
+
+.cms-translate-lookup-container .translate-lookup-icon:before {
+   left: 6px;
+   top: 8px;
+}
+
+.translate-lookup-icon {
+   padding: 0px !important;
+}
+
+.cms-translate-lookup-container .language-search:focus {
+   outline: 0px;
+   border-bottom: 2px solid #e7e7e7;
+}
+
+.translate-lookup-select {
+   max-height: 250px;
+   overflow-y: auto;
+   border-radius: 0 0 0 8px;
+}
+
+.translate-lookup-select::-webkit-scrollbar {
+   width: 12px; /* Set the width of the scrollbar */
+}
+
+/* For Webkit browsers (Chrome, Safari) - Track */
+.translate-lookup-select::-webkit-scrollbar-track {
+   background: #f1f1f1; /* Color of the track */
+}
+
+/* For Webkit browsers (Chrome, Safari) - Handle */
+.translate-lookup-select::-webkit-scrollbar-thumb {
+   background: #888; /* Color of the thumb/handle */
+   border-radius: 6px; /* Border radius of the thumb/handle */
+}
+
+/* For Webkit browsers (Chrome, Safari) - Handle on hover */
+.translate-lookup-select::-webkit-scrollbar-thumb:hover {
+   background: #666; /* Color of the thumb/handle on hover */
+}
+
+.translate-lookup-icon:before {
+   content: "\e800";
+   font-family: "icons";
+   position: absolute;
+   left: 8px;
+   top: 6px;
+   font-size: 20px;
+   color: #ccc;
+}
+
+.translate-lookup-options {
+   position: absolute;
+   z-index: 1;
+   background: #fff;
+   width: 100%;
+   max-height: 180px;
+   overflow-y: auto;
+   border-radius: 0 0 4px 4px;
+   text-align: left;
+}
+
+.language-select-item {
+   padding: 4px 10px 8px 12px;
+   cursor: pointer;
+   font-family: "Outfit", "sans-serif";
+}
+
+.language-select-item:hover,
+.language-select-item.selected {
+   background: var(--purple-light);
+   color: var(--secondary);
+}
+
+.language-select-item-en {
+   font-weight: 500;
+   color: var(--purple-text);
+   text-align: left;
+}
+
+.language-select-item-native {
+   line-height: 16px;
+   color: var(--secondary);
+   text-align: left;
+}
