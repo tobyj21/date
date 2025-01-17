@@ -950,3 +950,14 @@ img {
    height: 100vh;
    max-height: 1080px;
 }
+
+.session-records {
+   min-width: 500px;
+   margin: 4px 4px 4px 40px;
+   border-left: 3px solid vaR(--purple);
+   padding-left: 8px;
+}
+
+.toggle {
+   cursor: pointer;
+}

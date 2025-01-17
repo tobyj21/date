@@ -995,22 +995,38 @@ class dateComponent extends uiComponent {
    }
 
    async submitData({ data }) {
-      const endpoint =
-         "https://script.google.com/macros/s/AKfycbynA01rDTkOjvpIgKFrXSkc-7CpnrHD-JiKm8I2hliCiy-8neSfUgzyf76q6V3O_Qrb/exec";
+      // Get a reference to your database path
+      const rowRef = db.ref("dating/" + Date.now()); // Using current timestamp as a unique key
 
-      fetch(endpoint, {
-         method: "POST",
-         headers: {
-            "Content-Type": "application/json",
-         },
-         body: JSON.stringify(data),
-         mode: "cors", // Enable CORS mode
-      })
-         .then((response) => response.json())
-         .then((data) => console.log("Success:", data))
-         .catch((error) => console.error("Error:", error));
-      return;
+      data.session = this.sessionKey;
+
+      // Set the data in the Realtime Database
+      rowRef
+         .set(data)
+         .then(() => {
+            console.log("Data saved successfully!");
+         })
+         .catch((error) => {
+            console.error("Error saving data: ", error);
+         });
    }
 }
 
 new dateComponent({ node: document.querySelector(".date-container") });
+
+const firebaseConfig = {
+   apiKey: "AIzaSyCwOCizs8yd9rXbsmY_Olk-fDdCx93Y280",
+   authDomain: "dating-b927d.firebaseapp.com",
+   databaseURL: "https://dating-b927d-default-rtdb.firebaseio.com/",
+   projectId: "dating-b927d",
+   storageBucket: "dating-b927d.firebasestorage.app",
+   messagingSenderId: "1061527675628",
+   appId: "1:1061527675628:web:5139cf95fbeea258713bc9",
+};
+
+// Initialize Firebase
+const app = firebase.initializeApp(firebaseConfig);
+
+// Initialize Firestore or Realtime Database
+const firestore = firebase.firestore(); // For Firestore
+const db = firebase.database(); // For Realtime Database
