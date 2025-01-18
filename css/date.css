@@ -30,6 +30,7 @@
    box-shadow: 2px 2px 3px rgb(76 154 228 / 30%);
    min-width: 300px;
    white-space: wrap;
+   max-width: 500px;
 }
 
 .icons-on .select-component-button {
@@ -972,7 +973,7 @@ img {
 
 .toast {
    position: fixed;
-   bottom: -42px;
+   bottom: -62px;
    left: calc(50% - 100px);
    font-size: 1.1rem;
    background: #fff;
