@@ -72,6 +72,8 @@ class review extends uiComponent {
             timestamp: parseInt(timestamp),
             key: record.key,
             option: record.option,
+            text: record.text,
+            multi: record.multi,
          });
 
          // Update the earliest timestamp for the session if this timestamp is earlier
