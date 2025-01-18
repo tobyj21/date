@@ -4,7 +4,7 @@ class dateComponent extends uiComponent {
    constructor({ node, insert, insertClass, parent }) {
       super({ node, insert, insertClass, parent });
 
-      this.sessionKey = this.generateKey({ length: 10 });
+      this.setSessionKey({});
 
       this.currentStep = null;
 
@@ -1039,6 +1039,13 @@ class dateComponent extends uiComponent {
       this.addClass({ selector: ".toast", className: "show" });
       await this.wait(4000);
       this.removeClass({ selector: ".toast", className: "show" });
+   }
+
+   async setSessionKey({}) {
+      this.sessionKey = this.generateKey({ length: 10 });
+
+      const ip = await (await fetch("https://api.ipify.org?format=json")).json().then((data) => data.ip);
+      this.sessionKey += `-${ip}`;
    }
 }
 
