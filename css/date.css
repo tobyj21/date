@@ -947,7 +947,7 @@ img {
    max-width: 100vw;
    margin: auto;
    width: 100%;
-   height: calc(100vh - 50px);
+   height: 100vh;
    max-height: 1080px;
 }
 
@@ -960,4 +960,12 @@ img {
 
 .toggle {
    cursor: pointer;
+}
+
+.corner-img {
+   position: absolute;
+   top: 5px;
+   right: 5px;
+   z-index: -1;
+   width: 80px;
 }

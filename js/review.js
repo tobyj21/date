@@ -12,14 +12,15 @@ class review extends uiComponent {
          listeners: [
             { function: this.toggleDay, events: ["click"] },
             { function: this.toggleSession, events: ["click"] },
+            { function: this.sessionDelete, events: ["click"] },
          ],
       });
    }
 
    async render({}) {
-      this.data = await this.getData({});
+      this.rawData = await this.getData({});
 
-      this.data = this.structureData({ data: this.data });
+      this.data = this.structureData({ data: this.rawData });
 
       console.log(this.data);
 
@@ -114,8 +115,8 @@ class review extends uiComponent {
    renderDay({ day, index }) {
       let markup = `
       <div class="light-item day-item">
-         <div> 
-            <div class="review-action toggle" data-action="toggleDay" data-index="${index}">${day.date}: ${day.sessions.length} </div>
+         <div class="grow"> 
+            <div class="review-action toggle" data-action="toggleDay" data-index="${index}">${day.date}: <span class="badge">${day.sessions.length}</span> </div>
             <div class="sessions light-container hide" data-index="${index}">`;
 
       for (let s = 0; s < day.sessions.length; s++) {
@@ -139,15 +140,23 @@ class review extends uiComponent {
       const date = new Date(session.timestamp);
       const time = `${date.getHours()}:${date.getMinutes()}`;
       let markup = `
-      <div class="light-item session toggle review-action" data-action="toggleSession" data-id="${index}">
-         <div class="icon-clock">${time}</div>
+      <div class="light-item session" data-session="${session.session}"> 
+            <div>
+               <div class="icon-clock">${time}  <span class="badge">${session.records.length}</span></div>
+               <div>         
+                  <button class="toggle review-action" data-action="toggleSession" data-id="${index}">View</button>
+                  <button class="toggle review-action icon-trash grey" data-action="sessionDelete" data-session="${session.session}">Delete</button>
+               </div>
+
          <div class="light-items">`;
 
       for (let r = 0; r < session.records.length; r++) {
          const record = session.records[r];
+
+         const isLast = r == session.records.length - 1;
          markup += `
          <div class="session-records hide" data-id="${index}">
-            ${record.key}: ${record.option}
+            ${record.key} ${isLast ? `: ${record.option}` : ``}
             ${record.multi ? `<BR>(${record.multi})` : ""}
             ${record.text ? `<BR>(${record.text})` : ""}
          </div>
@@ -155,6 +164,7 @@ class review extends uiComponent {
       }
 
       markup += `
+            </div> 
          </div>
       </div>
       `;
@@ -178,6 +188,34 @@ class review extends uiComponent {
 
       if (visible) await this.show({ selector, node, animate, selectAll });
       if (!visible) await this.hide({ selector, node, animate, selectAll });
+   }
+
+   sessionDelete({ session }) {
+      const records = [];
+      for (const key in this.rawData) {
+         const item = this.rawData[key];
+         if (item.session === session) records.push(key);
+      }
+
+      // Remove all matching records
+      const updates = {};
+      for (let i = 0; i < records.length; i++) {
+         const itemKey = records[i];
+         updates[`dating/${itemKey}`] = null; // Batch deletion by setting to null
+      }
+
+      const rootRef = db.ref(); // Reference to the root
+      console.log("Updates object: ", updates);
+      rootRef
+         .update(updates)
+         .then(() => {
+            console.log(`Rows with session ${session} removed successfully.`);
+         })
+         .catch((error) => {
+            console.error(`Error removing rows: ${error}`);
+         });
+
+      this.getNode(`.session[data-session="${session}"]`).remove();
    }
 }
 

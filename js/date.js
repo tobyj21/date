@@ -480,6 +480,8 @@ class dateComponent extends uiComponent {
                },
             ],
          });
+
+         window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
       }
 
       if (step.textInput || step.textArea) {
@@ -525,6 +527,7 @@ class dateComponent extends uiComponent {
 
       if (this.currentStep.config.multiButtons) {
          responseValue.multi = this.currentStep.multiSelect.getValue();
+         responseValue.multi = responseValue.multi.toString();
       }
 
       if (this.currentStep.config.textInput || this.currentStep.config.textArea) {
