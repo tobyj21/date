@@ -308,6 +308,19 @@ class dateComponent extends uiComponent {
             buttons: [
                {
                   icon: "ok",
+                  key: "name",
+                  label: "Submit",
+               },
+            ],
+         },
+         {
+            key: `name`,
+            icon: "person",
+            text: `I almost forgot to ask your name...`,
+            textInput: true,
+            buttons: [
+               {
+                  icon: "ok",
                   key: "finish",
                   label: "Submit",
                },
@@ -483,7 +496,9 @@ class dateComponent extends uiComponent {
             ],
          });
 
-         window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+         if (timeTrigger) {
+            window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+         }
       }
 
       if (step.textInput || step.textArea) {
