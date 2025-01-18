@@ -377,7 +377,8 @@ class dateComponent extends uiComponent {
          },
       ];
 
-      this.node.innerHTML = `<div class="step-container"></div>`;
+      this.node.innerHTML = `<div class="step-container"></div>
+      <div class="toast icon-down-open">Scroll down for continue options</div>`;
       this.renderStep({ key: "start" });
 
       // Register listeners
@@ -463,6 +464,7 @@ class dateComponent extends uiComponent {
             const isFile = window.location.protocol === "file:";
             if (!isFile) {
                await this.wait(timeTrigger.timeTrigger - 3000);
+               this.showToast({});
             }
          }
 
@@ -1031,6 +1033,12 @@ class dateComponent extends uiComponent {
          .catch((error) => {
             console.error("Error saving data: ", error);
          });
+   }
+
+   async showToast({}) {
+      this.addClass({ selector: ".toast", className: "show" });
+      await this.wait(4000);
+      this.removeClass({ selector: ".toast", className: "show" });
    }
 }
 
