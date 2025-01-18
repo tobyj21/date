@@ -141,13 +141,17 @@ class review extends uiComponent {
       //Render timestamp as time of day
       const date = new Date(session.timestamp);
       const time = `${date.getHours()}:${date.getMinutes()}`;
+      const ip = session.session.split("-")[1];
+
       let markup = `
       <div class="light-item session" data-session="${session.session}"> 
             <div>
-               <div class="icon-clock">${time}  <span class="badge">${session.records.length}</span></div>
+               <div class="icon-clock">${time}: ${ip || ""}  <span class="badge">${session.records.length}</span></div>
                <div>         
                   <button class="toggle review-action" data-action="toggleSession" data-id="${index}">View</button>
-                  <button class="toggle review-action icon-trash grey" data-action="sessionDelete" data-session="${session.session}">Delete</button>
+                  <button class="toggle review-action icon-trash grey" data-action="sessionDelete" data-session="${
+                     session.session
+                  }">Delete</button>
                </div>
 
          <div class="light-items">`;
