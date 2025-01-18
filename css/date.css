@@ -29,7 +29,7 @@
    color: #6e539e;
    box-shadow: 2px 2px 3px rgb(76 154 228 / 30%);
    min-width: 300px;
-   white-space: wrap;
+   white-space: normal;
    max-width: 500px;
 }
 
