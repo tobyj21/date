@@ -973,7 +973,9 @@ img {
 
 .toast {
    position: fixed;
-   bottom: -62px;
+   bottom: 0; /* Align at the bottom */
+   left: 50%; /* Center horizontally */
+   transform: translate(0%, 110%); /* Push out of view */
    left: calc(50% - 100px);
    font-size: 1.1rem;
    background: #fff;
@@ -987,5 +989,5 @@ img {
 }
 
 .toast.show {
-   bottom: 0;
+   transform: translate(0%, 0%);
 }
