@@ -23,14 +23,13 @@ class dateComponent extends uiComponent {
          },
          {
             key: "section1",
-            text: `Press play once the video loads`,
-            video: "secion1",
+            video: "f8af7a34-36ab-4e62-99f2-6db41c9d1a6d",
             buttons: [
                {
                   icon: "right-open",
                   key: "reaction1",
                   label: "Continue",
-                  timeTrigger: (0 * 60 + 24) * 1000,
+                  timeTrigger: (2 * 60 + 24) * 1000,
                },
             ],
          },
@@ -157,14 +156,13 @@ class dateComponent extends uiComponent {
          },
          {
             key: "section2",
-            text: `Press play once the video loads`,
-            video: "section2",
+            video: "d99fc0cb-3f22-4717-8bc6-fd06a10d225b",
             buttons: [
                {
                   icon: "right-open",
                   key: "reaction2",
                   label: "Continue",
-                  timeTrigger: (3 * 60 + 8) * 1000,
+                  timeTrigger: 3 * 60 * 1000,
                },
             ],
          },
@@ -205,27 +203,25 @@ class dateComponent extends uiComponent {
          },
          {
             key: "different",
-            text: `OK, difference can be interesting. Last bit now: press play when the video loads`,
-            video: "section3",
+            video: "b054b26b-9e48-4643-9385-309e48945cef",
             buttons: [
                {
                   icon: "right-open",
                   key: "reaction3",
                   label: "Continue",
-                  timeTrigger: (3 * 60 + 30) * 1000,
+                  timeTrigger: 3 * 60 * 1000,
                },
             ],
          },
          {
             key: "dreamy",
-            text: `OK, brilliant. Last bit now: press play when the video loads`,
-            video: "section3",
+            video: "b054b26b-9e48-4643-9385-309e48945cef",
             buttons: [
                {
                   icon: "right-open",
                   key: "reaction3",
                   label: "Continue",
-                  timeTrigger: (3 * 60 + 30) * 1000,
+                  timeTrigger: 3 * 60 * 1000,
                },
             ],
          },
@@ -426,19 +422,10 @@ class dateComponent extends uiComponent {
       }
 
       if (step.video) {
-         /*
-         markup += `
-         
-        <div class="video-player">
-            <iframe src="https://iframe.mediadelivery.net/embed/164525/1f231675-e96a-43bf-af2f-6410c5e3db24?autoplay=true" 
-                  loading="lazy" style="border: none; height: 100%; width: 100%;" 
-                  allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" allowfullscreen="true">
-            </iframe>
-         </div>      
-        <div class="video-container">
-            ${step.video}
-        </div>`;
-        */
+         markup += ` 
+        <div class="video-player"> 
+            <iframe id="bunny-stream-embed" src="https://iframe.mediadelivery.net/embed/370652/${step.video}" width="100%" height="100%" frameborder="0" allow="autoplay" allowfullscreen="true"></iframe>
+         </div> `;
       }
 
       if (step.multiButtons) {
@@ -456,6 +443,7 @@ class dateComponent extends uiComponent {
       if (step.multiButtons) {
          this.currentStep.multiSelect = new selectComponent({
             node: this.getNode(`.multi-select-container`),
+            insertClass: "vertical",
             multiSelect: true,
             enableDeselect: true,
             type: "button",
@@ -472,7 +460,10 @@ class dateComponent extends uiComponent {
          const timeTrigger = step.buttons.find((b) => b.timeTrigger);
 
          if (timeTrigger) {
-            await this.wait(timeTrigger.timeTrigger);
+            const isFile = window.location.protocol === "file:";
+            if (!isFile) {
+               await this.wait(timeTrigger.timeTrigger - 3000);
+            }
          }
 
          this.currentStep.buttons = new selectComponent({
@@ -496,9 +487,33 @@ class dateComponent extends uiComponent {
             node: this.getNode(`.text-input-container`),
             textarea: step.textArea,
             plainText: true,
+            disableToolbar: true,
          });
       }
-      //Auto-play on video?
+
+      if (step.video) {
+         /*
+         const player = new playerjs.Player(document.getElementById("bunny-stream-embed"));
+         player.on("ready", () => {
+            console.log("ready");
+            player.play();
+         });
+
+         // Event handler for time updates when the player is playing
+         player.on("timeupdate", (timingData) => {
+            // Parse the JSON string to an object
+            const data = JSON.parse(timingData);
+            const currentTime = data.seconds;
+
+            // Calculate progress percentage and round to the nearest 25%
+            const progressPercentage = (currentTime / data.duration) * 100;
+            const progressRounded = Math.floor(progressPercentage / 25) * 25;
+
+            // Log the progress percentage
+            console.log("Progress Percentage: " + Math.floor(progressPercentage) + "%");
+         });
+         */
+      }
    }
 
    progress({ data }) {
@@ -995,6 +1010,10 @@ class dateComponent extends uiComponent {
    }
 
    async submitData({ data }) {
+      //Don't run locally
+      const isFile = window.location.protocol === "file:";
+      if (isFile) return;
+
       // Get a reference to your database path
       const rowRef = db.ref("dating/" + Date.now()); // Using current timestamp as a unique key
 

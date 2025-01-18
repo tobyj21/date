@@ -4,8 +4,8 @@
    font-family: "Outfit";
    font-style: normal;
    font-weight: 400;
-   src: url("/font/outfit-v6-latin-regular.woff2") format("woff2"),
-      /* Chrome 36+, Opera 23+, Firefox 39+ */ url("/font/outfit-v6-latin-regular.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+   src: url("../font/outfit-v6-latin-regular.woff2") format("woff2"),
+      /* Chrome 36+, Opera 23+, Firefox 39+ */ url("../font/outfit-v6-latin-regular.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 /* outfit-500 - latin */
 @font-face {
@@ -13,8 +13,8 @@
    font-family: "Outfit";
    font-style: normal;
    font-weight: 500;
-   src: url("/font/outfit-v6-latin-500.woff2") format("woff2"),
-      /* Chrome 36+, Opera 23+, Firefox 39+ */ url("/font/outfit-v6-latin-500.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+   src: url("../font/outfit-v6-latin-500.woff2") format("woff2"),
+      /* Chrome 36+, Opera 23+, Firefox 39+ */ url("../font/outfit-v6-latin-500.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
 /* Cera round pro */
@@ -30,5 +30,5 @@
    font-family: "Poppins";
    font-style: normal;
    font-weight: 600;
-   src: url("/font/poppins-v20-latin-600.woff2");
+   src: url("../font/poppins-v20-latin-600.woff2");
 }

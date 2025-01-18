@@ -947,7 +947,7 @@ img {
    max-width: 100vw;
    margin: auto;
    width: 100%;
-   height: 100vh;
+   height: calc(100vh - 50px);
    max-height: 1080px;
 }
 
