@@ -527,7 +527,7 @@ class textInputComponent extends uiComponent {
          let sanitizedValue = value.replace(sanitizeRegex, "");
          //Remove any negative symbols not at start
          if (this.negative) {
-            sanitizedValue = sanitizedValue.replace(/(?<=.)-/g, "");
+            sanitizedValue = sanitizedValue.replace(/(?!^)-/g, "");
          }
 
          // Ensure only one decimal point is allowed
