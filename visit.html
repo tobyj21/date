@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+   <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="initial-scale=1" />
+      <title>Date a Toby</title>
+      <link rel="stylesheet" type="text/css" href="./css/base.css?version=3.24" />
+      <link rel="stylesheet" type="text/css" href="./css/components/uiComponent.css?version=3.24" />
+      <link rel="stylesheet" href="./css/components/interact.css?version=3.24" />
+      <link rel="stylesheet" type="text/css" href="./css/fonts.css?version=3.24" />
+      <link rel="stylesheet" href="./css/icons.css?version=1.2" />
+      <link rel="stylesheet" type="text/css" href="./css/date.css?version=3.27" />
+
+      <!-- Firebase App (needed for Firebase features) -->
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+
+      <!-- Firebase Firestore SDK (for Firestore) -->
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+      <!-- Firebase Realtime Database SDK (for Realtime Database) -->
+      <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+   </head>
+
+   <body class=" ">
+      <img src="img/date-logo.svg" class="corner-img" />
+      <div class="date-container"></div>
+   </body>
+
+   <script>
+      let module = {};
+   </script>
+   <script type="text/javascript" src="https://cdn.embed.ly/player-0.1.0.min.js"></script>
+   <script src="./js/components/uiComponent.js"></script>
+   <script src="./js/components/selectComponent.js"></script>
+   <script src="./js/components/textInputComponent.js?version=3.27"></script>
+   <script src="./js/lib/quill.js" nonce="<%= nonce %>" defer></script>
+   <link href="./css/components/quill.snow.css?version=<%= appVersion %>" rel="stylesheet" />
+   <script src="./js/visitor.js?version=3.27"></script>
+</html>
