@@ -112,6 +112,39 @@ class review extends uiComponent {
          return dateA - dateB;
       });
 
+      //Add visit count
+      this.visits = {};
+
+      for (let i = 0; i < groupedByDate.length; i++) {
+         const date = groupedByDate[i];
+         for (let s = 0; s < date.sessions.length; s++) {
+            const session = date.sessions[s];
+
+            const ip = session.session.split("-")[1];
+            if (!ip) continue;
+            let visit = this.visits[ip];
+            if (!visit) {
+               this.visits[ip] = {
+                  name: null,
+                  count: 0,
+               };
+               visit = this.visits[ip];
+            }
+            visit.count++;
+            session.visitCount = visit.count;
+
+            //Add name
+            if (!visit.name) {
+               for (let r = 0; r < session.records.length; r++) {
+                  const record = session.records[r];
+                  if (record.key == "name") {
+                     visit.name = record.text;
+                  }
+               }
+            }
+         }
+      }
+
       return groupedByDate;
    }
    renderDay({ day, index }) {
@@ -142,16 +175,24 @@ class review extends uiComponent {
       const date = new Date(session.timestamp);
       const time = `${date.getHours()}:${date.getMinutes()}`;
       const ip = session.session.split("-")[1];
+      const visit = this.visits[ip];
 
       let markup = `
       <div class="light-item session" data-session="${session.session}"> 
             <div>
-               <div class="icon-clock">${time}: ${ip || ""}  <span class="badge">${session.records.length}</span></div>
+               <div class="icon-clock">${time}: ${ip || ""}  <span class="badge">${session.records.length}</span>`;
+      if (visit) {
+         markup += `
+                  <div>
+               ${visit && visit.name ? visit.name : ""}
+               ${session.visitCount > 1 ? `(visit ${session.visitCount})` : ""}
+                  </div>`;
+      }
+      markup += `
+               </div>
                <div>         
                   <button class="toggle review-action" data-action="toggleSession" data-id="${index}">View</button>
-                  <button class="toggle review-action icon-trash grey" data-action="sessionDelete" data-session="${
-                     session.session
-                  }">Delete</button>
+                  <button class="toggle review-action icon-trash grey" data-action="sessionDelete" data-session="${session.session}">Delete</button>
                </div>
 
          <div class="light-items">`;
