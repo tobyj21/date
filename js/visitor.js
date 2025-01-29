@@ -56,7 +56,7 @@ class dateComponent extends uiComponent {
                },
                {
                   icon: "condom",
-                  key: "dick",
+                  key: "dickPic",
                   label: "I just wanted dick pics. WHY ARE THERE NOT DICK PICS AND HOW DO I GET MY MONEY BACK?",
                },
             ],
@@ -74,7 +74,7 @@ class dateComponent extends uiComponent {
             ],
          },
          {
-            key: "dick",
+            key: "dickPic",
             icon: "closed",
             text: `I appreciate your enthusiasm for dick pics, but due to unprecedented demand, we're out of stock.`,
             buttons: [
@@ -92,21 +92,8 @@ class dateComponent extends uiComponent {
          },
          {
             key: "refund",
-            icon: "credit-card",
-            text: `Please enter your credit card number, and we'll be happy to get that processed. For extra security, we'll need your PIN a photo of your deeply felt disappointment.`,
-            textArea: true,
-            buttons: [
-               {
-                  icon: "ok",
-                  key: "creditExit",
-                  label: "Submit",
-               },
-            ],
-         },
-         {
-            key: "creditExit",
             icon: "benefits",
-            text: `Thank you. You can expect your refund very soon.`,
+            text: `Of course. Thanks for visiting Date A Toby. You can expect your refund very soon.`,
          },
          {
             key: "curious",
@@ -179,12 +166,12 @@ class dateComponent extends uiComponent {
                },
                {
                   icon: "help-circled",
-                  key: "finish",
-                  label: "We are pretty different, but there might be something there",
+                  key: "different",
+                  label: "We are pretty different, but I'm interested",
                },
                {
                   icon: "rings",
-                  key: "finish",
+                  key: "dreamy",
                   label: "OMG, he's so dreamy, what's the catch?",
                },
             ],
@@ -202,9 +189,149 @@ class dateComponent extends uiComponent {
             ],
          },
          {
+            key: "different",
+            video: "bbb7fe5a-aa29-4910-bf29-b73a3dadb600",
+            buttons: [
+               {
+                  icon: "right-open",
+                  key: "reaction3",
+                  label: "Continue",
+                  timeTrigger: 5 * 60 * 1000,
+               },
+            ],
+         },
+         {
+            key: "dreamy",
+            video: "bbb7fe5a-aa29-4910-bf29-b73a3dadb600",
+            buttons: [
+               {
+                  icon: "right-open",
+                  key: "reaction3",
+                  label: "Continue",
+                  timeTrigger: 5 * 60 * 1000,
+               },
+            ],
+         },
+         {
+            key: `reaction3`,
+            icon: "thumbs-up-alt",
+            iconSpin: true,
+            text: `OK, thank for making it through my very elaborate invitation - what do you think?`,
+            buttons: [
+               {
+                  icon: "thumbs-down",
+                  key: "finalExit",
+                  label: "You've lost me there - it's not for me",
+               },
+               {
+                  icon: "heart-empty",
+                  key: "intent",
+                  label: "Enthusiastic yes to this - what's next?",
+               },
+            ],
+         },
+         {
+            key: `finalExit`,
+            icon: "heart",
+            text: `Ah so close. Please have a wonderful life, and thanks for watching`,
+            buttons: [
+               {
+                  icon: "forwards",
+                  key: "feedback",
+                  label: "One last thing before you go...",
+               },
+            ],
+         },
+         {
+            key: `intent`,
+            icon: "split",
+            text: `Fantastic. So onto open communication! Assuming we click in person, which of these are potentially on the cards for you?`,
+            multiButtons: [
+               {
+                  icon: "rings",
+                  key: "relationship",
+                  label: "Life partner",
+               },
+               {
+                  icon: "friend",
+                  key: "friends",
+                  label: "New friends",
+               },
+               {
+                  icon: "dancing",
+                  key: "connection",
+                  label: "Short term connection",
+               },
+            ],
+            buttons: [
+               {
+                  icon: "ok",
+                  key: "name",
+                  label: "Submit",
+               },
+            ],
+         },
+         {
+            key: `name`,
+            icon: "person",
+            text: `I almost forgot to ask your name...`,
+            textInput: true,
+            buttons: [
+               {
+                  icon: "ok",
+                  key: "faq",
+                  label: "Submit",
+               },
+            ],
+         },
+         {
+            key: `faq`,
+            icon: "help-circled",
+            text: `OK, I promise this is the end now, but one last opportunity to hear more from me if you want answers to these FAQs...`,
+            buttons: [
+               {
+                  icon: "door",
+                  key: "finish",
+                  label: "I really don't need to hear any more, you can stop!",
+               },
+               {
+                  icon: "chat",
+                  key: "faqRespond",
+                  label: "This has been a lot - how am I supposed to respond?",
+               },
+               {
+                  icon: "journey",
+                  key: "faqElaborate",
+                  label: "Why have you gone to such elaborate lengths to get a date?",
+               },
+            ],
+         },
+         {
+            key: "faqRespond",
+            video: "ca3292c8-e1e2-4af0-9a93-9bdf4790580c",
+            buttons: [
+               {
+                  icon: "right-open",
+                  key: "faq",
+                  label: "Continue",
+               },
+            ],
+         },
+         {
+            key: "faqElaborate",
+            video: "113c4d58-a933-4937-94e0-d5265d63b462",
+            buttons: [
+               {
+                  icon: "right-open",
+                  key: "faq",
+                  label: "Continue",
+               },
+            ],
+         },
+         {
             key: `finish`,
             icon: "heart",
-            text: `OK, so far so good. I really hope you've enjoyed Date A Toby so far. I'd love to hear from you and get to see a bit about you, so please get in touch! I'll just wait patiently until then.`,
+            text: `I really hope you've enjoyed Date A Toby so far. I look forward to hearing from you, so do get in touch! I'll just wait patiently until then.`,
          },
          {
             key: `feedback`,
