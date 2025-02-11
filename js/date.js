@@ -143,13 +143,13 @@ class dateComponent extends uiComponent {
          },
          {
             key: "section2",
-            video: "d99fc0cb-3f22-4717-8bc6-fd06a10d225b",
+            video: "7cb39e4e-d550-4ef0-af36-d8853c6388c1",
             buttons: [
                {
                   icon: "right-open",
                   key: "reaction2",
                   label: "Continue",
-                  timeTrigger: 3 * 60 * 1000,
+                  timeTrigger: 5 * 60 * 1000 + 45 * 1000,
                },
             ],
          },
@@ -157,76 +157,22 @@ class dateComponent extends uiComponent {
             key: `reaction2`,
             icon: "thumbs-up-alt",
             iconSpin: true,
-            text: `How is this going for you?`,
-            buttons: [
-               {
-                  icon: "thumbs-down",
-                  key: "secondExit",
-                  label: "We are very different, and I can't imagine hanging out",
-               },
-               {
-                  icon: "help-circled",
-                  key: "different",
-                  label: "We are pretty different, but I'm interested",
-               },
-               {
-                  icon: "rings",
-                  key: "dreamy",
-                  label: "OMG, he's so dreamy, what's the catch?",
-               },
-            ],
-         },
-         {
-            key: "secondExit",
-            icon: "leaver",
-            text: `Fair enough - thanks for checking out Date A Toby. I really hope everything goes great for you.`,
-            buttons: [
-               {
-                  icon: "forwards",
-                  key: "feedback",
-                  label: "One last thing before you go...",
-               },
-            ],
-         },
-         {
-            key: "different",
-            video: "bbb7fe5a-aa29-4910-bf29-b73a3dadb600",
-            buttons: [
-               {
-                  icon: "right-open",
-                  key: "reaction3",
-                  label: "Continue",
-                  timeTrigger: 5 * 60 * 1000,
-               },
-            ],
-         },
-         {
-            key: "dreamy",
-            video: "bbb7fe5a-aa29-4910-bf29-b73a3dadb600",
-            buttons: [
-               {
-                  icon: "right-open",
-                  key: "reaction3",
-                  label: "Continue",
-                  timeTrigger: 5 * 60 * 1000,
-               },
-            ],
-         },
-         {
-            key: `reaction3`,
-            icon: "thumbs-up-alt",
-            iconSpin: true,
-            text: `OK, thank for making it through my very elaborate invitation - what do you think?`,
+            text: `OK, thank for making it through my very elaborate invitation. Now you must pick`,
             buttons: [
                {
                   icon: "thumbs-down",
                   key: "finalExit",
-                  label: "You've lost me there - it's not for me",
+                  label: "This isn't for me",
                },
                {
-                  icon: "heart-empty",
-                  key: "intent",
-                  label: "Enthusiastic yes to this - what's next?",
+                  icon: "help-circled",
+                  key: "different",
+                  label: "We are pretty different, but I'd like a date",
+               },
+               {
+                  icon: "rings",
+                  key: "dreamy",
+                  label: "OMG, he's so dreamy, can I date a Toby?",
                },
             ],
          },
@@ -243,9 +189,38 @@ class dateComponent extends uiComponent {
             ],
          },
          {
-            key: `intent`,
+            key: `dreamy`,
             icon: "split",
             text: `Fantastic. So onto open communication! Assuming we click in person, which of these are potentially on the cards for you?`,
+            multiButtons: [
+               {
+                  icon: "rings",
+                  key: "relationship",
+                  label: "Life partner",
+               },
+               {
+                  icon: "friend",
+                  key: "friends",
+                  label: "New friends",
+               },
+               {
+                  icon: "dancing",
+                  key: "connection",
+                  label: "Short term connection",
+               },
+            ],
+            buttons: [
+               {
+                  icon: "ok",
+                  key: "name",
+                  label: "Submit",
+               },
+            ],
+         },
+         {
+            key: `different`,
+            icon: "split",
+            text: `OK, difference can be interesting. So onto open communication! Assuming we click in person, which of these are potentially on the cards for you?`,
             multiButtons: [
                {
                   icon: "rings",
