@@ -143,7 +143,7 @@ class dateComponent extends uiComponent {
          },
          {
             key: "section2",
-            video: "7cb39e4e-d550-4ef0-af36-d8853c6388c1",
+            video: "661c34f3-c71d-4578-9b6c-1b21c76b58e8",
             buttons: [
                {
                   icon: "right-open",

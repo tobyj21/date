@@ -24,7 +24,13 @@ class review extends uiComponent {
 
       console.log(this.data);
 
-      let markup = ``;
+      let hitCount = 0;
+      for (let i = 0; i < this.data.length; i++) {
+         const day = this.data[i];
+         hitCount += day.sessions.length;
+      }
+
+      let markup = `[${hitCount}] visits`;
 
       for (let d = 0; d < this.data.length; d++) {
          const day = this.data[d];
@@ -109,7 +115,7 @@ class review extends uiComponent {
       groupedByDate.sort((a, b) => {
          const dateA = new Date(a.date.split("/").reverse().join("-"));
          const dateB = new Date(b.date.split("/").reverse().join("-"));
-         return dateA - dateB;
+         return dateB - dateA;
       });
 
       //Add visit count
